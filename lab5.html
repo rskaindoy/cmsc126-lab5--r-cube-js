@@ -11,15 +11,41 @@
         <button type="button" id="button1">Show Current Date</button>
         
         <!-- Adding Student -->
-         
+        <form id="studentForm">
+            <!--name-->
+            <label for="SName">Name</label>
+            <input type="text" id="SName" placeholder="Enter name">
+            <br>
+            <!--age-->
+            <label for="SAge">Age</label>
+            <input type="number" id="SAge" placeholder="Enter age">
+            <br>
+            <!--email-->
+            <label for="SEmail">Email</label>
+            <input type="text" id="SEmail" placeholder="Enter a valid email address">
+            <br>
+            <!--course-->
+            <label for="SCourse">Course</label>
+            <select id = "SCourse" required>
+                <option value="" disabled selected>Select a course</option> <!--TODO format this so it looks like the placeholders-->
+                <option value="BA Food Appreciation">BA Food Appreciation</option>
+                <option value="BA Applied Poetry of the Future">BA Applied Poetry of the Future</option>
+                <option value="BS Computer Repair Shop">BS Computer Repair Shop</option>
+                <option value="BS Video Gaming">BS Video Gaming</option>
+                <option value="BS Installing and Downloading">BS Installing and Downloading</option>
+            </select>
+            <br>
+            <button type="submit" id="button3">Submit Form</button>
+
+        </form>
         <!-- Search Student -->
         <form id="searchForm">
             <label>Searching a Student?</label>
             <input type="text" id="studID" placeholder="Enter Student ID" required>
-            <button type="submit" id="button3">Search Student</button>
+            <button type="submit" id="button4">Search Student</button>
         </form>
 
         <!-- Display All -->
-        <button type="button" id="button4">Display All</button>
+        <button type="button" id="button5">Display All</button>
     </body>
 </html>
