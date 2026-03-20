@@ -33,19 +33,19 @@ function time_now() {
 
 
 function add_student() {
-    const name = document.getElementById("SName").value;
+    const name = document.getElementById("SName").value.trim();
     const age = Number(document.getElementById("SAge").value);
     const email = document.getElementById("SEmail").value;
     const course = document.getElementById("SCourse").value;
 
-    //TODO const SNumber which will need generator function
+    const sNumber = generate_sNum();
 
     //student object and properties
     const student = {
-        // studentNumber: studentNumber,
+        sNumber: sNumber,
         name: name,
         age: age,
-        email: email,
+        email: email,   
         course: course
     };
 
@@ -61,12 +61,81 @@ function find_student() {
 function display_list() {
 }
 
+function generate_sNum(){
+    let noDupe = false;
+    let random;
+    while(noDupe == false){
+        random = "2024"
+        for(i=0; i<5; i++){
+            random += Math.floor(Math.random() * 10); //why is js weird with integers??? what the hell
+            }
+
+        //checks for duplicates, if any studentnumber == random variable generated
+        if (students.some(st => st.sNumber === random)){
+            noDupe = false;
+            console.log("Duplicate found!")
+        } else {
+            noDupe = true;
+            console.log("Unique ID")
+        }
+        
+    }
+    console.log(random) //debugging
+    return random
+}
+
 //event-handling
 btn1.addEventListener("click", time_now); //call time_now function which show current date and time button is clicked
+
+
 
 //call add_student function which appends student obj to arr list
 studentForm.addEventListener("submit", (event) => {
     event.preventDefault(); //for preventing refreshing of page
-    add_student(); 
-    console.log("form submitted"); //for debugging: check if form is submitted
+
+//form validation, does not submit if there are any invalid inputs
+
+    let valid = true;
+
+    const checkName = document.getElementById("SName").value.trim(); //For removing trailing and leading whitespace
+    const checkAge = Number(document.getElementById("SAge").value);
+    const checkEmail = document.getElementById("SEmail").value;
+
+
+    //name validation
+        if (checkName.length <= 5){
+            valid = false;
+            document.getElementById('errName').textContent= "Invalid Name! Must have length greater than 5.";
+        } else if (checkName.indexOf(" ") == -1){
+            valid = false;
+            document.getElementById('errName').textContent= "Invalid Name! Must have whitespace in between.";
+        } else {
+            document.getElementById('errName').textContent="";
+        }
+
+        //age validation
+        if ((checkAge < 18) || (checkAge>99) ){
+            valid = false;
+            document.getElementById('errAge').textContent= "Invalid Age! Must be > 18 or < 19." ;
+        } else {
+            document.getElementById('errAge').textContent= "";
+        }
+
+        //email validation
+        if (!(checkEmail.endsWith("@up.edu.ph"))){
+            valid = false;
+            document.getElementById('errEmail').textContent= "Invalid Email! Must end with '@up.edu.ph'.";
+        } else {
+            document.getElementById('errEmail').textContent= "";
+        }
+
+    if (valid){
+        alert("Form submitted successfully!")
+        add_student(); //only adds student if all input is valid
+        console.log("form submitted"); //for debugging: check if form is submitted
+    }   console.log(students); //check current submitted students
+    
+    //IMPORTANT: if page is reloaded, all submitted students will be lost
+    
+    
 });
