@@ -11,22 +11,25 @@
         <button type="button" id="button1">Show Current Date</button>
         
         <!-- Adding Student -->
-        <form id="studentForm">
+        <form id="studentForm" name="studentForm"  method="post">
             <!--name-->
             <label for="SName">Name</label>
-            <input type="text" id="SName" placeholder="Enter name">
+            <input type="text" id="SName" name="SName" placeholder="Enter name">
+            <span id="errName" style="color:red"></span>
             <br>
             <!--age-->
             <label for="SAge">Age</label>
-            <input type="number" id="SAge" placeholder="Enter age">
+            <input type="number" id="SAge" name="SAge" placeholder="Enter age">
+            <span id="errAge" style="color:red"></span>
             <br>
             <!--email-->
             <label for="SEmail">Email</label>
-            <input type="text" id="SEmail" placeholder="Enter a valid email address">
+            <input type="text" id="SEmail" name="SEmail" placeholder="Enter a valid email address">
+            <span id="errEmail" style="color:red"></span>
             <br>
             <!--course-->
             <label for="SCourse">Course</label>
-            <select id = "SCourse" required>
+            <select id = "SCourse" name="SCourse" required>
                 <option value="" disabled selected>Select a course</option> <!--TODO format this so it looks like the placeholders-->
                 <option value="BA Food Appreciation">BA Food Appreciation</option>
                 <option value="BA Applied Poetry of the Future">BA Applied Poetry of the Future</option>
