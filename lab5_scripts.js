@@ -1,8 +1,13 @@
 //declaration and initialization of variables
 const btn1 = document.getElementById("button1"); //ref to button1
 const btn3 = document.getElementById("button3"); //ref to student form field
+const btn4 = document.getElementById("button4"); // ref to search student button
+const btn5 = document.getElementById("button5"); // ref to display all button
 const studentForm = document.getElementById("studentForm"); //ref to student form 
-const students =[] //for student obj storage
+const toSearch = document.getElementById("studID");
+const showFind = document.getElementById("showFind");
+const showAll = document.getElementById("showAll");
+const students = [] //for student obj storage
 
 
 //functions
@@ -55,10 +60,30 @@ function add_student() {
 }
 //TODO to implement
 function find_student() {
+    const foundStudent = students.find(student => student.sNumber === toSearch.value.trim())
+    
+    if (foundStudent === undefined){
+        showFind.innerHTML = "Student record does not exist.";
+        console.log("Student record does not exist.")
+    } else {
+        showFind.innerHTML = "";      // to clear prev content
+        for (let property in foundStudent){
+            showFind.innerHTML += property + ': ' + foundStudent[property] + '<br>';
+            console.log(property + ': ' + foundStudent[property] + '\h');
+        }
+    }
 }
 
 //TODO to implement
 function display_list() {
+    showAll.innerHTML = "";           // to clear prev content
+
+    for (let student of students){
+        for (let property in student){
+            showAll.innerHTML += property + ': ' + student[property] + '<br>';
+        }
+        showAll.innerHTML += '<br>';    // for space between students
+    }
 }
 
 function generate_sNum(){
@@ -66,13 +91,14 @@ function generate_sNum(){
     let random;
     while(noDupe == false){
         random = "2024"
-        for(i=0; i<5; i++){
+        for(let i=0; i<5; i++){
             random += Math.floor(Math.random() * 10); //why is js weird with integers??? what the hell
             }
 
         //checks for duplicates, if any studentnumber == random variable generated
         if (students.some(st => st.sNumber === random)){
             noDupe = false;
+            // content.textContent = 'Duplicate found!' ?
             console.log("Duplicate found!")
         } else {
             noDupe = true;
@@ -93,7 +119,7 @@ btn1.addEventListener("click", time_now); //call time_now function which show cu
 studentForm.addEventListener("submit", (event) => {
     event.preventDefault(); //for preventing refreshing of page
 
-//form validation, does not submit if there are any invalid inputs
+    //form validation, does not submit if there are any invalid inputs
 
     let valid = true;
 
@@ -139,3 +165,8 @@ studentForm.addEventListener("submit", (event) => {
     
     
 });
+
+// finding student
+btn4.addEventListener("click", find_student);
+
+btn5.addEventListener("click", display_list);
