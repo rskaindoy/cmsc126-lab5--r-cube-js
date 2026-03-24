@@ -30,7 +30,7 @@
             <!--course-->
             <label for="SCourse">Course</label>
             <select id = "SCourse" name="SCourse" required>
-                <option value="" disabled selected>Select a course</option> <!--TODO format this so it looks like the placeholders-->
+                <option value="" disabled selected>Select a course</option> 
                 <option value="BA Food Appreciation">BA Food Appreciation</option>
                 <option value="BA Applied Poetry of the Future">BA Applied Poetry of the Future</option>
                 <option value="BS Computer Repair Shop">BS Computer Repair Shop</option>
@@ -44,8 +44,8 @@
 
         <!-- Search Student -->
         <form id="searchForm">
-            <label>Searching a Student?</label>
-            <input type="text" id="studID" placeholder="Enter Student ID" required>
+            <label for="studID">Searching a Student?</label>
+            <input type="number" id="studID" placeholder="Enter Student ID" required>
             <button type="button" id="button4">Find Student in Records</button>
             <p id="showFind"></p> 
         </form>
