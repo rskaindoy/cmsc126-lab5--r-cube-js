@@ -70,7 +70,7 @@ function find_student() {
         showFind.innerHTML = "";      // to clear prev content
         for (let property in foundStudent){
             showFind.innerHTML += property + ': ' + foundStudent[property] + '<br>';
-            console.log(property + ': ' + foundStudent[property] + '\h');
+            console.log(property + ': ' + foundStudent[property] + '\n');
         }
     }
 }
@@ -80,6 +80,8 @@ function display_list() {
     showAll.innerHTML = "";           // to clear prev content
 
     for (let student of students){
+        console.log(student)
+        
         for (let property in student){
             showAll.innerHTML += property + ': ' + student[property] + '<br>';
         }
