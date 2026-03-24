@@ -94,7 +94,7 @@ function generate_sNum(){
     while(noDupe == false){
         random = "2024"
         for(let i=0; i<5; i++){
-            random += Math.floor(Math.random() * 10); //why is js weird with integers??? what the hell
+            random += Math.floor(Math.random() * 10);
             }
 
         //checks for duplicates, if any studentnumber == random variable generated
