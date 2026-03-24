@@ -70,7 +70,7 @@ function find_student() {
         showFind.innerHTML = "";      // to clear prev content
         for (let property in foundStudent){
             showFind.innerHTML += property + ': ' + foundStudent[property] + '<br>';
-            console.log(property + ': ' + foundStudent[property] + '\h');
+            console.log(property + ': ' + foundStudent[property] + '\n');
         }
     }
 }
@@ -80,6 +80,8 @@ function display_list() {
     showAll.innerHTML = "";           // to clear prev content
 
     for (let student of students){
+        console.log(student)
+
         for (let property in student){
             showAll.innerHTML += property + ': ' + student[property] + '<br>';
         }
@@ -94,13 +96,12 @@ function generate_sNum(){
     while(noDupe == false){
         random = "2024"
         for(let i=0; i<5; i++){
-            random += Math.floor(Math.random() * 10); //why is js weird with integers??? what the hell
+            random += Math.floor(Math.random() * 10); 
             }
 
         //checks for duplicates, if any studentnumber == random variable generated
         if (students.some(st => st.sNumber === random)){
             noDupe = false;
-            // content.textContent = 'Duplicate found!' ?
             console.log("Duplicate found!")
         } else {
             noDupe = true;
