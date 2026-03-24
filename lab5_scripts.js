@@ -58,7 +58,8 @@ function add_student() {
     console.log(student) //for debugging: track student objects
 
 }
-//TODO to implement
+
+
 function find_student() {
     const foundStudent = students.find(student => student.sNumber === toSearch.value.trim())
     
@@ -74,7 +75,7 @@ function find_student() {
     }
 }
 
-//TODO to implement
+
 function display_list() {
     showAll.innerHTML = "";           // to clear prev content
 
@@ -85,6 +86,7 @@ function display_list() {
         showAll.innerHTML += '<br>';    // for space between students
     }
 }
+
 
 function generate_sNum(){
     let noDupe = false;
@@ -110,7 +112,7 @@ function generate_sNum(){
     return random
 }
 
-//event-handling
+//event-handling for time
 btn1.addEventListener("click", time_now); //call time_now function which show current date and time button is clicked
 
 
@@ -169,4 +171,5 @@ studentForm.addEventListener("submit", (event) => {
 // finding student
 btn4.addEventListener("click", find_student);
 
+// displaying list of students
 btn5.addEventListener("click", display_list);
