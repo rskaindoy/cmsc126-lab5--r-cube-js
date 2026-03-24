@@ -144,7 +144,7 @@ studentForm.addEventListener("submit", (event) => {
         //age validation
         if ((checkAge < 18) || (checkAge>99) ){
             valid = false;
-            document.getElementById('errAge').textContent= "Invalid Age! Must be > 18 or < 19." ;
+            document.getElementById('errAge').textContent= "Invalid Age! Must be > 18 or < 99." ;
         } else {
             document.getElementById('errAge').textContent= "";
         }
